@@ -1,0 +1,93 @@
+/* src/components/Login.css */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mulish:wght@700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('/public/paw2.jpg'); /* Update with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Mulish', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container {
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-size: 3em;
+    font-family: 'Lobster', cursive;
+    color: #ff00ff;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container h2 {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+
+.form-container label {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.form-container input {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.form-container a {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    color: #6a0dad;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+}
+
+.form-container button {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6a0dad;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-container button:hover {
+    background-color: #5a009e;
+}

@@ -1,0 +1,73 @@
+/* Styling for the Sign-up Form */
+.signup-form-container {
+    max-width: 400px;
+    margin: 100px auto; /* Centering the form and adding more space at the top */
+    padding: 30px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .signup-form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 28px; /* Increased font size for the heading */
+    color: #333; /* Slightly darker text color */
+  }
+  
+  .signup-form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering the form elements */
+  }
+  
+  .signup-form-container label {
+    font-size: 16px; /* Increased label font size */
+    margin-bottom: 8px;
+    width: 100%;
+    text-align: left; /* Align labels to the left */
+  }
+  
+  .signup-form-container input {
+    padding: 12px;
+    margin-bottom: 20px;
+    width: 100%; /* Full width for inputs */
+    font-size: 16px; /* Increased input text size */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .signup-form-container button {
+    padding: 12px 20px;
+    font-size: 18px; /* Larger button text */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Full width for the button */
+    transition: background-color 0.3s ease; /* Smoother transition on hover */
+  }
+  
+  .signup-form-container button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 600px) {
+    .signup-form-container {
+      padding: 20px;
+    }
+  
+    .signup-form-container h2 {
+      font-size: 24px;
+    }
+  
+    .signup-form-container input, 
+    .signup-form-container button {
+      font-size: 16px;
+    }
+  }
+  
