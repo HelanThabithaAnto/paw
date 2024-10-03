@@ -1,70 +1,87 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import './Signup.css'; // Assuming your CSS is in a file named Signup.css
 
-function Signup() {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+const Signup = () => {
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [otp, setOtp] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
+    const [isOtpSent, setIsOtpSent] = useState(false);
+    const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Sign-up successful!\nUsername: ${formData.username}\nEmail: ${formData.email}`);
-    // Here, you would typically handle form submission (e.g., sending data to the server)
-  };
+    const handleSignup = async (e) => {
+        e.preventDefault();
 
-  return (
-    <div className="signup-form-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
+        try {
+            const response = await axios.post('http://localhost:5000/signup', {
+                username,
+                email,
+                password,
+            });
+
+            setMessage(response.data.message);
+            setIsOtpSent(true); // OTP has been sent
+        } catch (error) {
+            setMessage(error.response.data.message || 'Error signing up');
+        }
+    };
+
+    const handleOtpVerification = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:5000/verify-otp', {
+                email,
+                otp,
+            });
+
+            setMessage(response.data.message);
+        } catch (error) {
+            setMessage(error.response.data.message || 'Error verifying OTP');
+        }
+    };
+
+    return (
+        <div className="signup-form-container">
+            <h2>Sign Up</h2>
+            {!isOtpSent ? (
+                <form onSubmit={handleSignup}>
+                    <label>Username:</label>
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <label>Password:</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button type="submit">Sign Up</button>
+                </form>
+            ) : (
+                <form onSubmit={handleOtpVerification}>
+                    <label>Enter OTP:</label>
+                    <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                    />
+                    <button type="submit">Verify OTP</button>
+                </form>
+            )}
+            {message && <p>{message}</p>}
         </div>
-
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  );
-}
+    );
+};
 
 export default Signup;
